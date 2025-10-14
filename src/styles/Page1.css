@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500;700&display=swap");
+
+.page1 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/bg1.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Title */
+.page1-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.4;
+  text-transform: capitalize;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* Subtitle */
+.page1-subtitle {
+  margin-top: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.5px;
+}
+
+/* Button */
+.page1-button {
+  margin-top: 50px;
+  padding: 12px 36px;
+  border: 2px solid white;
+  border-radius: 30px;
+  background: transparent;
+  color: white;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page1-button:hover {
+  background: white;
+  color: black;
+}
