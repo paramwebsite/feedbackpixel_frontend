@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useFeedback } from "../context/FeedbackContext";
 import "../styles/Page3.css";
 
-export default function Page3() {
+export default function Page4() {
   const navigate = useNavigate();
   const { answers, updateAnswer } = useFeedback();
 
@@ -16,36 +16,41 @@ export default function Page3() {
   ];
 
   const handleSelect = (option) => {
-    let newSelection = [...answers.page3];
+    let newSelection = [...(answers.page4 || [])];
     if (newSelection.includes(option)) {
       newSelection = newSelection.filter((item) => item !== option);
     } else {
       newSelection.push(option);
     }
-    updateAnswer("page3", newSelection);
-
-    // ✅ Navigate automatically when at least one option is selected
-    setTimeout(() => navigate("/page4"), 300);
+    updateAnswer("page4", newSelection);
   };
 
   return (
-    <div className="page3">
-      <h2 className="page3-title">How would you describe the gallery?</h2>
-      <p className="page3-subtitle">
+    <div className="page4">
+      <h2 className="page4-title">How would you describe the gallery?</h2>
+      
+      <p className="page4-subtitle">
         Let us know if it’s a bit glitchy — we’re still upgrading the map! You can select multiple!
       </p>
 
-      <div className="page3-grid">
+      <div className="page4-grid">
         {options.map((opt) => (
           <button
             key={opt}
-            className={`page3-option ${answers.page3.includes(opt) ? "selected" : ""}`}
+            className={`page4-option ${answers.page4?.includes(opt) ? "selected" : ""}`}
             onClick={() => handleSelect(opt)}
           >
             {opt}
           </button>
         ))}
       </div>
+
+      {/* ✅ Show Next button only when user selects at least one option */}
+      {answers.page4?.length > 0 && (
+        <button className="page4-next-btn" onClick={() => navigate("/page4")}>
+          Next
+        </button>
+      )}
     </div>
   );
 }

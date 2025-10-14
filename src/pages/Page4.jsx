@@ -1,25 +1,43 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useFeedback } from "../context/FeedbackContext";
+import "../styles/Page5.css";
 
-export default function Page4() {
+export default function Page7() {
   const navigate = useNavigate();
-  const options = [
-    "Creative",
-    "Fun & Playful",
-    "Educational",
-    "Could be better",
-    "Confusing",
-    "Not my style",
-  ];
+  const { updateAnswer } = useFeedback();
+  const [text, setText] = useState("");
+
+  const handleSubmit = () => {
+    if (text.trim()) {
+      updateAnswer("page7", text);
+      setTimeout(() => navigate("/page6"), 300);
+    }
+  };
 
   return (
-    <div className="page" style={{ backgroundImage: "url('/bg4.jpg')" }}>
-      <h2 className="text-3xl font-bold mb-8">HOW WOULD YOU DESCRIBE THE GALLERY?</h2>
-      <div className="grid grid-cols-2 gap-4 max-w-lg">
-        {options.map((opt) => (
-          <button key={opt} className="option-btn">{opt}</button>
-        ))}
+    <div className="page7">
+      <h2 className="page7-title">
+        Is there anything you would like<br />to add?
+      </h2>
+
+      <div className="page7-input-container">
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder=""
+          className="page7-input"
+        />
       </div>
-      <button onClick={() => navigate("/page5")} className="nav-btn">Next</button>
+
+      <button
+        className="page7-submit-btn"
+        onClick={handleSubmit}
+        disabled={!text.trim()}
+      >
+        Submit
+      </button>
     </div>
   );
 }
