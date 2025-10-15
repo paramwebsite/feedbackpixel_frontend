@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /* --- PAGE LAYOUT --- */
 .page3 {
   width: 100%;
@@ -36,7 +36,7 @@
 
 /* --- SUBTITLE --- */
 .page3-subtitle {
- font-family: "Syncopate", sans-serif;
+font-family: "Inter", sans-serif;
   font-size: clamp(1rem, 1vw, 1rem);
   opacity: 0.85;
   margin-bottom: 2rem;
@@ -57,7 +57,7 @@
   border-radius: 12px;
   background: transparent;
   color: white;
-   font-family: "Syncopate", sans-serif;
+   font-family: "Inter", sans-serif;
   font-size: 1rem;
   padding: 12px 0;
   cursor: pointer;
@@ -84,7 +84,7 @@
   border-radius: 30px;
   background: transparent;
   color: white;
-  font-family: "Syncopate", sans-serif;
+font-family: "Inter", sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
   transition: all 0.3s ease;

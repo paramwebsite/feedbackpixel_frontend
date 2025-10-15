@@ -1,3 +1,6 @@
+
+
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useFeedback } from "../context/FeedbackContext";
@@ -8,14 +11,12 @@ export default function Page5() {
   const { answers, resetAnswers } = useFeedback();
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(""); // 👈 new state
+  const [errorMessage, setErrorMessage] = useState("");
 
   const question = "Is there anything you would like to add?";
 
   const handleSubmit = async () => {
-    if (!text.trim()) return;
-
-    const updatedAnswers = { ...answers, [question]: text };
+    const updatedAnswers = { ...answers, [question]: text || "" };
 
     const cleanedAnswers = Object.fromEntries(
       Object.entries(updatedAnswers).filter(([_, v]) =>
@@ -30,7 +31,8 @@ export default function Page5() {
 
     try {
       setLoading(true);
-      setErrorMessage(""); // clear previous errors
+      setErrorMessage("");
+      console.log(payload);
       const response = await fetch("http://3.109.132.143/api/qna", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -53,8 +55,8 @@ export default function Page5() {
   };
 
   const handleHomeClick = () => {
-    resetAnswers(); // ✅ clears context
-    navigate("/"); // ✅ navigate to home page
+    resetAnswers();
+    navigate("/");
   };
 
   return (
@@ -82,12 +84,11 @@ export default function Page5() {
         <button
           className="page7-submit-btn"
           onClick={handleSubmit}
-          disabled={!text.trim() || loading}
+          disabled={loading} // ✅ only disable when loading, not when empty
         >
           {loading ? "Submitting..." : "Submit"}
         </button>
 
-        {/* 🚨 Inline Error Message */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
