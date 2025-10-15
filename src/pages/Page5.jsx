@@ -31,7 +31,7 @@ export default function Page5() {
     try {
       setLoading(true);
       setErrorMessage(""); // clear previous errors
-      const response = await fetch("http://localhost:5000/api/qna", {
+      const response = await fetch("http://3.109.132.143/api/qna", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
