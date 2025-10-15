@@ -11,7 +11,7 @@ export default function Page7() {
   const handleSubmit = () => {
     if (text.trim()) {
       updateAnswer("page7", text);
-      setTimeout(() => navigate("/page6"), 300);
+      setTimeout(() => navigate("/page5"), 300);
     }
   };
 

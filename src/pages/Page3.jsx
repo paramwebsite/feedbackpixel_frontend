@@ -27,25 +27,26 @@ export default function Page4() {
 
   return (
     <div className="page4">
-      <h2 className="page4-title">How would you describe the gallery?</h2>
-      
-      <p className="page4-subtitle">
-        Let us know if it’s a bit glitchy — we’re still upgrading the map! You can select multiple!
-      </p>
+      <div className="page4-content">
+        <h2 className="page4-title">How would you describe the gallery?</h2>
 
-      <div className="page4-grid">
-        {options.map((opt) => (
-          <button
-            key={opt}
-            className={`page4-option ${answers.page4?.includes(opt) ? "selected" : ""}`}
-            onClick={() => handleSelect(opt)}
-          >
-            {opt}
-          </button>
-        ))}
+        <p className="page4-subtitle">
+          Let us know if it’s a bit glitchy — we’re still upgrading the map! You can select multiple!
+        </p>
+
+        <div className="page4-grid">
+          {options.map((opt) => (
+            <button
+              key={opt}
+              className={`page4-option ${answers.page4?.includes(opt) ? "selected" : ""}`}
+              onClick={() => handleSelect(opt)}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* ✅ Show Next button only when user selects at least one option */}
       {answers.page4?.length > 0 && (
         <button className="page4-next-btn" onClick={() => navigate("/page4")}>
           Next

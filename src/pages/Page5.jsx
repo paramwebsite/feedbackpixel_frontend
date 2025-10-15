@@ -8,7 +8,10 @@ export default function Page8() {
     <div className="page8">
       <h1 className="page8-title">Image decoded</h1>
 
-      <div className="page8-bubble">Thank you!</div>
+      {/* Replace text with image */}
+      <div className="page8-bubble">
+        <img src="/thankyou.png" alt="Thank You" className="page8-image" />
+      </div>
 
       <button className="page8-home-btn" onClick={() => navigate("/")}>
         Home
