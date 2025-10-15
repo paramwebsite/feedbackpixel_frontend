@@ -4,20 +4,27 @@ const FeedbackContext = createContext();
 
 export function FeedbackProvider({ children }) {
   const [answers, setAnswers] = useState({
-    page2: "",
-    page3: [],
-    page4: [],
-    page5: "",
-    page6: "",
-    page7: "",
+    "Which exhibit did you enjoy the most?": "",
+    "How would you describe the gallery?": [],
+    "What did you learn from the gallery?": [],
+    "Is there anything you would like to add?": "",
   });
 
-  const updateAnswer = (page, value) => {
-    setAnswers((prev) => ({ ...prev, [page]: value }));
+  const updateAnswer = (question, value) => {
+    setAnswers((prev) => ({ ...prev, [question]: value }));
+  };
+
+  const resetAnswers = () => {
+    setAnswers({
+      "Which exhibit did you enjoy the most?": "",
+      "How would you describe the gallery?": [],
+      "What did you learn from the gallery?": [],
+      "Is there anything you would like to add?": "",
+    });
   };
 
   return (
-    <FeedbackContext.Provider value={{ answers, updateAnswer }}>
+    <FeedbackContext.Provider value={{ answers, updateAnswer, resetAnswers }}>
       {children}
     </FeedbackContext.Provider>
   );

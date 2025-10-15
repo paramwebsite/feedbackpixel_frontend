@@ -7,7 +7,7 @@ export default function Page1() {
   return (
     <div className="page1">
       <h1 className="page1-title">
-        Decode the<br /> Image
+        Decode <br />the  Image
       </h1>
 
       <p className="page1-subtitle">

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 
 /* --- PAGE LAYOUT --- */
-.page4 {
+.page3 {
   width: 100%;
   height: 100vh;
   background-image: url("/bg3.png");
@@ -10,22 +10,23 @@
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* 👈 move content to top instead of center */
   overflow: hidden;
 }
 
 /* --- CONTENT WRAPPER --- */
-.page4-content {
-  margin-left: 8vw; /* consistent left margin */
+.page3-content {
+  margin-left: 8vw;
+  margin-top: 10vh; /* 👈 add top spacing to match uploaded layout */
   max-width: 900px;
   text-align: left;
 }
 
 /* --- TITLE --- */
-.page4-title {
-  font-family: "Orbitron", sans-serif;
+.page3-title {
+  font-family: "Syncopate", sans-serif;
   font-weight: 700;
-  font-size: clamp(1.8rem, 20vw, 3.2rem);
+  font-size: clamp(1.3rem, 10vw, 3rem);
   letter-spacing: 1px;
   text-transform: uppercase;
   line-height: 1.3;
@@ -34,16 +35,16 @@
 }
 
 /* --- SUBTITLE --- */
-.page4-subtitle {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(0.8rem, 1vw, 1rem);
+.page3-subtitle {
+ font-family: "Syncopate", sans-serif;
+  font-size: clamp(1rem, 1vw, 1rem);
   opacity: 0.85;
   margin-bottom: 2rem;
   /* max-width: 520px; */
 }
 
 /* --- GRID --- */
-.page4-grid {
+.page3-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(180px, 1fr));
   gap: 1rem;
@@ -51,30 +52,30 @@
 }
 
 /* --- OPTION BUTTONS --- */
-.page4-option {
+.page3-option {
   border: 2px solid white;
   border-radius: 12px;
   background: transparent;
   color: white;
-  font-family: "Orbitron", sans-serif;
+   font-family: "Syncopate", sans-serif;
   font-size: 1rem;
   padding: 12px 0;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-.page4-option:hover {
+.page3-option:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.page4-option.selected {
+.page3-option.selected {
   background: white;
   color: black;
   font-weight: 700;
 }
 
 /* --- NEXT BUTTON --- */
-.page4-next-btn {
+.page3-next-btn {
   position: absolute;
   bottom: 60px;
   right: 80px;
@@ -83,13 +84,37 @@
   border-radius: 30px;
   background: transparent;
   color: white;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Syncopate", sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
-.page4-next-btn:hover {
+.page3-next-btn:hover {
   background: white;
   color: black;
+}
+
+
+
+/* --- HOME BUTTON --- */
+.home-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.1);
+}
+
+.home-icon {
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) invert(1); /* make it white */
 }
