@@ -53,10 +53,10 @@
 //   );
 // }
 
-
 import { useNavigate } from "react-router-dom";
 import { useFeedback } from "../context/FeedbackContext";
 import "../styles/page2.css";
+import { useState } from "react";
 
 export default function Page2() {
   const navigate = useNavigate();
@@ -64,7 +64,8 @@ export default function Page2() {
 
   const question = "Which exhibit did you enjoy the most?";
 
-  // 🖼️ Each option with its image
+  const [selected, setSelected] = useState([]);
+
   const options = [
     { name: "Hands on Opera", img: "/HandsonOpera.jpeg" },
     { name: "Mo Cap", img: "/MoCap.jpeg" },
@@ -74,9 +75,18 @@ export default function Page2() {
     { name: "Hologram Fan", img: "/hologram.jpeg" },
   ];
 
+  // Toggle selection
   const handleSelect = (opt) => {
-    updateAnswer(question, opt.name);
-    setTimeout(() => navigate("/page3"), 200);
+    setSelected((prev) =>
+      prev.includes(opt.name)
+        ? prev.filter((item) => item !== opt.name)
+        : [...prev, opt.name]
+    );
+  };
+
+  const handleNext = () => {
+    updateAnswer(question, selected);
+    navigate("/page3");
   };
 
   const handleHomeClick = () => {
@@ -97,15 +107,29 @@ export default function Page2() {
         </h2>
 
         <div className="page2-grid">
-          {options.map((opt) => (
-            <div key={opt.name} className="page2-card" onClick={() => handleSelect(opt)}>
-              <div className="page2-card-top">
-                <img src={opt.img} alt={opt.name} className="page2-image" />
+          {options.map((opt) => {
+            const isActive = selected.includes(opt.name);
+            return (
+              <div
+                key={opt.name}
+                className={`page2-card ${isActive ? "selected" : ""}`}
+                onClick={() => handleSelect(opt)}
+              >
+                <div className="page2-card-top">
+                  <img src={opt.img} alt={opt.name} className="page2-image" />
+                </div>
+                <div className="page2-card-label">{opt.name}</div>
               </div>
-              <div className="page2-card-label">{opt.name}</div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {/* Next Button shows only when at least one option is selected */}
+        {selected.length > 0 && (
+          <button className="page2-next-btn" onClick={handleNext}>
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
